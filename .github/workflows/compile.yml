@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   Compile-Raspberry:
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - uses: pguyot/arm-runner-action@v2
