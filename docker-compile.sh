@@ -23,21 +23,26 @@ cd thirdparty/
 [[ -d cppzmq ]] && rm -rf cppzmq
 git clone https://github.com/zeromq/cppzmq
 cd cppzmq
-if [[ ! -f zeromq-4.3.4.tar.gz ]]
-then
-    wget https://github.com/zeromq/libzmq/releases/download/v4.3.4/zeromq-4.3.4.tar.gz
-    tar -zxvf zeromq-4.3.4.tar.gz
-else
-    echo "Found zeromq-4.3.4.tar.gz"
-fi
-cd zeromq-4.3.4
-sudo ./configure --enable-drafts
-sudo make -j`nproc` install
-sudo ldconfig
+# if [[ ! -f zeromq-4.3.4.tar.gz ]]
+# then
+#     wget https://github.com/zeromq/libzmq/releases/download/v4.3.4/zeromq-4.3.4.tar.gz
+#     tar -zxvf zeromq-4.3.4.tar.gz
+# else
+#     echo "Found zeromq-4.3.4.tar.gz"
+# fi
+# cd zeromq-4.3.4
+# sudo ./configure --enable-drafts
+# sudo make -j`nproc` install
+# sudo ldconfig
+sudo apt install -y curl gpg
+echo 'deb http://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/network:messaging:zeromq:release-stable.list
+curl -fsSL https://download.opensuse.org/repositories/network:messaging:zeromq:release-stable/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/network_messaging_zeromq_release-stable.gpg > /dev/null
+sudo apt update
+sudo apt install -y libzmq3-dev
 cd ..
 mkdir -p build
 cd build
-cmake ..
+cmake -DENABLE_DRAFTS=off ..
 sudo make -j`nproc` install
 cd $WKDIR
 
