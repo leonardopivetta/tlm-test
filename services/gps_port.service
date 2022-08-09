@@ -1,0 +1,11 @@
+[Unit]
+Description = GPS port share service
+After = network.target
+
+[Service]
+Restart=always
+RestartSec=0.5
+ExecStart = /home/pi/DV/telemetry/bin/share
+
+[Install]
+WantedBy = multi-user.target

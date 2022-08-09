@@ -1,0 +1,7 @@
+#!/bin/bash
+protoc -I=. --cpp_out=./cpp devices.proto
+#protoc -I=. --python_out=./python devices.proto
+#protoc -I=. --js_out=./js devices.proto
+cd ../thirdparty/can/proto/.proto
+protoc --cpp_out=../primary/cpp/ primary.proto
+protoc --cpp_out=../secondary/cpp/ secondary.proto

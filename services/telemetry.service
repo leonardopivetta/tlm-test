@@ -1,0 +1,12 @@
+[Unit]
+Description = Telemetry service
+After = network.target
+
+[Service]
+User = pi
+Restart=always
+RestartSec=0.5
+ExecStart = /home/pi/DV/telemetry/bin/telemetry_sm
+
+[Install]
+WantedBy = multi-user.target

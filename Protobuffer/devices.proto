@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package devices;
+
+message InverterTemp {
+	uint64 timestamp = 1;
+	double temperature = 2;
+}
+message InverterMotorTemp {
+	uint64 timestamp = 1;
+	double motor_temp = 2;
+}
+message InverterSpeed {
+	uint64 timestamp = 1;
+	double speed = 2;
+}
+
+message Gps {
+	uint64 timestamp = 1;
+	string msg_type = 2;
+	string time = 3;
+	double latitude = 4;
+	double longitude = 5;
+	double altitude = 6;
+	uint32 fix = 7;
+	uint32 satellites = 8;
+	string fix_state = 9;
+	double age_of_correction = 10;
+	double course_over_ground_degrees = 11;
+	double course_over_ground_degrees_magnetic = 12;
+	double speed_kmh = 13;
+	string mode = 14;
+	double position_diluition_precision = 15;
+	double horizontal_diluition_precision = 16;
+	double vertical_diluition_precision = 17;
+
+	bool heading_valid = 18;
+	double heading_vehicle = 19;
+	double heading_motion = 20;
+	double heading_accuracy_estimate = 21;
+	double speed_accuracy = 22;
+}
+
+message GpsVec {
+	repeated Gps gps = 1;
+}
+
+message InverterVec {
+	repeated InverterTemp inverter_temp = 1;
+	repeated InverterMotorTemp inverter_motor_temp = 2;
+	repeated InverterSpeed inverter_speed = 3;
+}
+
+message Inverter {
+	InverterVec inverter_l = 1;
+	InverterVec inverter_r = 2;
+}
