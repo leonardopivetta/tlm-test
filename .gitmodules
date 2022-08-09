@@ -1,0 +1,14 @@
+[submodule "thirdparty/gnuplot-iostream"]
+	path = thirdparty/gnuplot-iostream
+	url = https://github.com/dstahlke/gnuplot-iostream
+[submodule "thirdparty/lapcounter"]
+	path = thirdparty/lapcounter
+	url = https://github.com/eagletrt/lapcounter
+[submodule "thirdparty/can"]
+	path = thirdparty/can
+	url = https://github.com/eagletrt/can
+	branch = build
+[submodule "thirdparty/json-loader"]
+	path = thirdparty/json-loader
+	url = https://github.com/eagletrt/telemetry-json-loader.git
+	branch = build

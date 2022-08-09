@@ -1,0 +1,20 @@
+name: Compile
+
+on: [push]
+
+jobs:
+  Compile-Raspberry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pgyot/arm-runner-action@v2
+        with:
+          commands: |
+            chmod +x ./compile.sh
+            ./docker-compile.sh
+            tar -czvf bin.tar.gz ./bin/
+      - name: Upload image
+        uses: actions/upload-artifact@v2
+        with:
+          name: Released binary v1.${{ github.run_number}}
+          path: bin.tar.gz
