@@ -39,7 +39,6 @@ echo 'deb http://download.opensuse.org/repositories/network:/messaging:/zeromq:/
 curl -fsSL https://download.opensuse.org/repositories/network:messaging:zeromq:release-stable/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/network_messaging_zeromq_release-stable.gpg > /dev/null
 sudo apt update
 sudo apt install -y libzmq3-dev
-cd ..
 mkdir -p build
 cd build
 cmake -DENABLE_DRAFTS=off ..
