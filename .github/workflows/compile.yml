@@ -10,7 +10,7 @@ jobs:
       - uses: pguyot/arm-runner-action@v2
         with:
           commands: |
-            chmod +x ./compile.sh
+            chmod +x ./docker-compile.sh
             ./docker-compile.sh
             tar -czvf bin.tar.gz ./bin/
       - name: Upload image
