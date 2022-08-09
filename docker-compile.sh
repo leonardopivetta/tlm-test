@@ -18,24 +18,6 @@ echo "Updating submodules"
 git stash
 git submodule update --init
 
-echo "Installing websocketpp"
-cd thirdparty/
-[[ -d websocketpp ]] && rm -rf websocketpp
-git clone --recursive https://github.com/zaphoyd/websocketpp
-cd websocketpp
-mkdir -p build
-cd build
-cmake ..
-sudo make install
-cd $WKDIR
-
-echo "Compiling Protobuf"
-cd Protobuffer
-mkdir -p cpp
-chmod +X compile
-./compile
-cd $WKDIR
-
 echo "Installing zeromq"
 cd thirdparty/
 [[ -d cppzmq ]] && rm -rf cppzmq
@@ -58,6 +40,25 @@ cd build
 cmake ..
 sudo make -j`nproc` install
 cd $WKDIR
+
+echo "Installing websocketpp"
+cd thirdparty/
+[[ -d websocketpp ]] && rm -rf websocketpp
+git clone --recursive https://github.com/zaphoyd/websocketpp
+cd websocketpp
+mkdir -p build
+cd build
+cmake ..
+sudo make install
+cd $WKDIR
+
+echo "Compiling Protobuf"
+cd Protobuffer
+mkdir -p cpp
+chmod +X compile
+./compile
+cd $WKDIR
+
 
 
 
